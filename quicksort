@@ -1,0 +1,34 @@
+#include<iostream>
+#include<cstdio>
+using namespace std;
+
+int a[]={0,12,214,354,215,45,24,5};
+
+void quicksort(int left,int right){
+	int mid=a[(left+right)/2];
+	int t;
+	int i=left,j=right;
+
+	while(i<=j){
+		while(a[i]<mid&&i<right)i++;//== also exchange
+		while(a[j]>mid&&j>left)j--;
+		if(i<=j){
+		
+			t=a[i];
+			a[i]=a[j];
+			a[j]=t;
+			i++;
+			j--;
+		}
+	}
+	if(i<right) quicksort(i,right);
+	if(left<j) quicksort(left,j);
+}
+int main(){
+	quicksort(0,7);
+
+	for(int i=0;i<8;i++){
+		printf("%d ",a[i]);
+	}
+	return 0;
+}
